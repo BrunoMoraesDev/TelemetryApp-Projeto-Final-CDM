@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "746966484259",
+    "project_id": "telemetryapp-7c8ef",
+    "storage_bucket": "telemetryapp-7c8ef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:746966484259:android:a1af4719aab2598a35b896",
+        "android_client_info": {
+          "package_name": "com.example.telemetryapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "746966484259-3imoq3s7aj7g5juo4br0qet53754j29a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARtSlfaeC54meVWbWvMETKn-uTwqvDoao"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "746966484259-3imoq3s7aj7g5juo4br0qet53754j29a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
