@@ -10,17 +10,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.telemetryapp.databinding.ActivityLoginBinding;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class LoginActivity extends AppCompatActivity {
 
     private ActivityLoginBinding binding;
-
     private FirebaseAuth mAuth;
+    private ArrayList<Operador> listaUsuarios;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        OperadorDAO operadorDAO = new OperadorDAO();
+        listaUsuarios = operadorDAO.listarOperadores();
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -60,8 +66,12 @@ public class LoginActivity extends AppCompatActivity {
         ).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 finish();
-                OperadorDAO operadorDAO = new OperadorDAO();
-                boolean ehAdmin = operadorDAO.ehAdmin(email);
+                boolean ehAdmin = true;
+                for(Operador item : listaUsuarios){
+                    if (item.email.equals(email)){
+                        ehAdmin = false;
+                    };
+                }
                 if (ehAdmin){
                     startActivity(new Intent(this, AdminActivity.class));
                 } else {

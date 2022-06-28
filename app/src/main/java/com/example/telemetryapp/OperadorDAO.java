@@ -13,6 +13,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class OperadorDAO {
     private DatabaseReference databaseReference;
@@ -68,6 +69,26 @@ public class OperadorDAO {
             }
         });
         return ehAdmin;
+    }
+
+    public ArrayList<Operador> listarOperadores(){
+        ArrayList<Operador> listaOperadores = new ArrayList<>();
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot: snapshot.getChildren())
+                {
+                    Operador operador = dataSnapshot.getValue(Operador.class);
+                    listaOperadores.add(operador);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        return listaOperadores;
     }
 
 
